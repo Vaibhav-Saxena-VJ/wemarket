@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /sample-request*
+Disallow: /customization*
+Disallow: /analyst*
+Disallow: /discount*
+Disallow: /purchase*
+Sitemap: https://wemarketresearch.com/sitemap.xml
