@@ -291,7 +291,7 @@
                     <div class="iq-tabs">
                         <ul class="nav nav-pills sticky-top" id="pills-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('*toc/*') || Request::is('*research-methodology/*') || Request::is('*infographics/*') || Request::is('*request-free-sample-pdf/*') ? '' : 'active show' }}" href="{{ url('reports/'.$report_details->url.'/'.$report_details->id) }}" role="tab">
+                                <a class="nav-link {{ Request::is('*toc/*') || Request::is('/research-methodology') || Request::is('*infographics/*') || Request::is('*request-free-sample-pdf/*') ? '' : 'active show' }}" href="{{ url('reports/'.$report_details->url.'/'.$report_details->id) }}" role="tab">
                                     <h6 class="tab-title">Description</h6>
                                 </a>
                             </li>
@@ -301,7 +301,10 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Request::is('*research-methodology/*') ? 'active' : ''}}" href="{{ url('reports/research-methodology/'.$report_details->url.'/'.$report_details->id) }}" role="tab">
+                                <a class="nav-link {{ Request::is('/research-methodology') ? 'active' : '' }}" 
+                                href="{{ url('/research-methodology') }}" 
+                                role="tab" 
+                                target="_blank">
                                     <h6 class="tab-title">Research Methodology</h6>
                                 </a>
                             </li>
@@ -513,7 +516,7 @@
                         <ul>
                             <li><a href="{{ url('reports/'.$report_details->url.'/'.$report_details->id) }}" onclick="showFAQ()">Description</a></li>
                             <li><a href="{{ url('reports/toc/'.$report_details->url.'/'.$report_details->id) }}" onclick="hideFAQ()"> Table Of Contents </a></li>
-                            <li><a href="{{ url('reports/research-methodology/'.$report_details->url.'/'.$report_details->id) }}" onclick="hideFAQ()">Research Methodology</a></li>
+                            <li><a href="{{ url('/research-methodology') }}" onclick="hideFAQ()">Research Methodology</a></li>
                             {{-- <li><a href="{{ url('reports/infographics/'.$report_details->url.'/'.$report_details->id) }}" onclick="hideFAQ()">Infographics</a></li> --}}
                             <li><a href="{{ url('reports/request-free-sample-pdf/'.$report_details->url.'/'.$report_details->id) }}" onclick="hideFAQ()">Request Free Sample PDF</a></li>
                         </ul>
@@ -636,7 +639,7 @@
                     <div class="plans-detail mb-4 wow fadeInRight">
                         <!-- dynamic action url in js -->
                         <form action="" method="get" id="license_type_submit_form">
-                            <div class="plans-detail_header">
+                            <!-- <div class="plans-detail_header">
                                 <h6>CHOOSE LICENSE TYPE</h6>
                             </div>
                             <div class="plans-detail_cards form-check">
@@ -653,7 +656,7 @@
                                     <input class="form-check-input" type="radio" name="license" id="exampleRadios3" value="enterprise">
                                     <label for="exampleRadios3" class="form-check-label tip">Corporate Access - $ {{ !empty($report_details->enterprise_user_cost) ? $report_details->enterprise_user_cost : '' }} </label>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="plans-detail_btns">
                                 <button id="license_type_button" class="Btn">Buy Now</button>
                             </div>

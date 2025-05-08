@@ -26,13 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 pt-40">
-                <!-- <div class="banner-btns">
-                    <div class="read-more-btn wow fadeInUp" data-wow-duration="1s">
-                        <a class="fancy" href="{{url('/research-reports/all')}}">
-                            <span class="text">View All Categories</span>
-                        </a>
-                    </div>
-                </div> -->
+                
                 <div class="amr-banner-content wow fadeInLeft">
                     <h1>
                         {{!empty($home->section_1_heading)?$home->section_1_heading:''}}

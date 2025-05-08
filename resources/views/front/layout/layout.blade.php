@@ -2,6 +2,8 @@
 
 @yield('content')
 
+@yield('page-style')
+
 @include('front.include.footer')
 
 @yield('script')

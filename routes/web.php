@@ -112,7 +112,8 @@ Route::get('discount/{url}/{report_id}', [FrontEnquiryController::class, 'index'
 Route::get('blog/{url}/{report_id}', [FrontEnquiryController::class, 'index']);
 
 Route::get('reports/toc/{report_slug}/{report_id}/', [FrontReportController::class, 'report_details']);
-Route::get('reports/research-methodology/{report_slug}/{report_id}/', [FrontReportController::class, 'report_details']);
+// Route::get('reports/research-methodology/{report_slug}/{report_id}/', [FrontReportController::class, 'report_details']);
+Route::get('reports/research-methodology', [FrontReportController::class, 'report_detailsi']);
 // Route::get('reports/infographics/{report_slug}/{report_id}/', [FrontReportController::class, 'report_details']);
 Route::get('reports/request-free-sample-pdf/{report_slug}/{report_id}/', [FrontReportController::class, 'report_details']);
 
