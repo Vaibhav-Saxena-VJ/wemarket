@@ -10,6 +10,7 @@ use App\Models\Arm_research_methodology;
 use App\Models\Arm_research_methodology_banner;
 use App\Models\Arm_relate_report;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Str;
 
 class FrontReportController extends Controller
@@ -57,6 +58,35 @@ class FrontReportController extends Controller
         }
         // $related_reports = Arm_reports::where('status', 'active')->whereRaw("find_in_set('".explode(",",$report_details->category_id)[0]."', category_id)")->where('id','!=',$report_details->id)->orderBy('id', 'desc')->take(5)->get();
         $related_reports = Arm_relate_report::where('status', 'active')->where('report_id', $report_details->id)->with('reports')->orderBy('id', 'desc')->get();
+        return view('front.reports-view', compact('report_details', 'category_details', 'related_reports', 'research', 'banner'));
+    }
+
+    public function report_detailsi()
+    {
+        // For example, get the latest active report
+        $report_details = Arm_reports::where('status', 'active')->orderBy('id', 'desc')->first();
+    
+        if (empty($report_details)) {
+            return redirect('/404');
+        }
+    
+        $category_details = ReportCategory::where('status', 'active')
+            ->where('id', $report_details->category_id)
+            ->first();
+    
+        if (empty($category_details)) {
+            return redirect('/404');
+        }
+    
+        $research = Arm_research_methodology::where('status', 'active')->first();
+        $banner = Arm_research_methodology_banner::where('status', 'active')->get();
+    
+        $related_reports = Arm_relate_report::where('status', 'active')
+            ->where('report_id', $report_details->id)
+            ->with('reports')
+            ->orderBy('id', 'desc')
+            ->get();
+    
         return view('front.reports-view', compact('report_details', 'category_details', 'related_reports', 'research', 'banner'));
     }
 
